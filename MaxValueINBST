@@ -1,0 +1,11 @@
+int maxvalue(Node* root)
+ {
+  Node* temp=root;
+  if(root==NULL)
+  return -1;
+  while(temp->right!=NULL)
+  {
+    temp=temp->right;
+  }
+   return temp->data;
+ }
