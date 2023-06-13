@@ -1,0 +1,39 @@
+/************************************************************
+
+    Following is the TreeNode class structure
+
+    template <typename T>
+    class TreeNode {
+       public:
+        T data;
+        TreeNode<T> *left;
+        TreeNode<T> *right;
+
+        TreeNode(T data) {
+            this->data = data;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+************************************************************/
+void conversion(TreeNode<int>* root,TreeNode<int>* &head)
+{
+    if(root==NULL)
+    return;
+    conversion(root->right, head);
+    root->right=head;
+    if(head!=NULL)
+    head->left=root;
+    head=root;
+    conversion(root->left, head);
+}
+TreeNode<int>* bstToSortedDLL(TreeNode<int> *root)
+{
+      TreeNode<int> *head=NULL;
+        //    if(root==NULL)
+        //    return head;
+  
+	conversion(root,head);
+    return head;
+}
