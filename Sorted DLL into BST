@@ -1,0 +1,16 @@
+Node* dllintobst(Node* &head,int n)
+{
+     // Sorted array method
+     if(n<=0 ||head==NULL)
+     {
+        return NULL;
+     }
+     Node* leftsubtree=dllintobst(head,n/2);
+     Node* root=head;
+     root->left=leftsubtree;
+     head=head->right;
+     root->right=dllintobst(head,n-n/2-1);
+
+     return root;
+
+}
